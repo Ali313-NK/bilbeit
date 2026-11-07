@@ -135,7 +135,7 @@
             <li>28 يوم جاهزين، 15 لـ20 دقيقة</li><li>13 حركة مشروحة بالرسم</li>
             <li>بلا نط، والجيران ما بيسمعوا شي</li><li>اختبار، جدول، وصفحة سلامة</li>
           </ul>
-          <a class="btn btn-block lemonsqueezy-button" data-checkout="women" href="#">اشتري نسخة النساء</a>
+          <a class="btn btn-block" data-checkout="women" href="#">اشتري نسخة النساء</a>
         </article>
         <article class="plan plan-dark" id="buy-men">
           <span class="chip">للرجال</span>
@@ -145,12 +145,12 @@
             <li>28 يوم جاهزين، 15 لـ20 دقيقة</li><li>13 حركة مشروحة بالرسم</li>
             <li>قوة ولياقة بالبيت، بلا نادي</li><li>اختبار، جدول، وصفحة سلامة</li>
           </ul>
-          <a class="btn btn-block lemonsqueezy-button" data-checkout="men" href="#">اشتري نسخة الرجال</a>
+          <a class="btn btn-block" data-checkout="men" href="#">اشتري نسخة الرجال</a>
         </article>
       </div>
       <p class="pay-note">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-        الدفع آمن عبر Lemon Squeezy، وهي البائع الرسمي بالفاتورة. ما منشوف ولا منحفظ معلومات بطاقتك.
+        الدفع آمن عبر شركة دفع عالمية، وهي البائع الرسمي يلي بيظهر اسمها بالفاتورة. ما منشوف ولا منحفظ معلومات بطاقتك.
       </p>
     </div>
   </section>
@@ -188,7 +188,7 @@
       <details><summary>شو الفرق بين نسخة النساء ونسخة الرجال؟</summary><p>نفس الخطة ونفس الحركات. الكتابة موجّهة إلك، وأرقام نسخة الرجال أعلى شوي.</p></details>
       <details><summary>بنزل وزن بـ28 يوم؟</summary><p>ما منوعد بأي رقم. هيدا برنامج ليصير عندك روتين حركة وتصير أقوى شوي كل أسبوع. كل جسم بيتغيّر بسرعة مختلفة.</p></details>
       <details><summary>عندي وجع بالضهر أو الركب، بقدر أعمله؟</summary><p>اسأل طبيبك أو أخصائي علاج فيزيائي قبل ما تبلّش. البرنامج عام، ومش بديل عن نصيحة طبية.</p></details>
-      <details><summary>كيف بدفع؟</summary><p>بالبطاقة (Visa أو Mastercard) من أي بلد، عبر Lemon Squeezy. وأحيانًا Apple Pay أو Google Pay حسب جهازك.</p></details>
+      <details><summary>كيف بدفع؟</summary><p>بالبطاقة (Visa أو Mastercard) من أي بلد، عبر صفحة دفع آمنة. وأحيانًا Apple Pay أو Google Pay حسب جهازك.</p></details>
       <details><summary>إذا ما عجبني؟</summary><p>بترجعلك مصاريك خلال 14 يوم من الشراء. شوف <a href="refund.html">سياسة الاسترجاع</a>.</p></details>
       <details><summary>كيف بحكي معكن؟</summary><p>ابعتلنا رسالة على إنستغرام <a href="https://instagram.com/bilbeit.fit" dir="ltr">@bilbeit.fit</a>.</p></details>
     </div>
@@ -225,15 +225,15 @@
 </div>
 
 <script>
-  // Lemon Squeezy checkout links. Paste each product's "Share" link here once the store is approved.
+  // Checkout links from the payment provider. Paste each product's link here once the store is approved.
   const CHECKOUT = {
-    women: "",  // e.g. https://bilbeit.lemonsqueezy.com/buy/xxxxxxxx
+    women: "",
     men: ""
   };
   document.querySelectorAll("[data-checkout]").forEach(function (a) {
     const url = CHECKOUT[a.dataset.checkout];
-    if (url) { a.href = url + (url.includes("?") ? "&" : "?") + "embed=1"; }
-    else { a.classList.remove("lemonsqueezy-button"); a.href = "https://instagram.com/bilbeit.fit"; a.textContent += " (قريبًا)"; }
+    if (url) { a.href = url; }
+    else { a.href = "https://instagram.com/bilbeit.fit"; a.textContent += " (قريبًا)"; }
   });
   document.getElementById("y").textContent = new Date().getFullYear();
   // Respect "reduce motion": stop the SVG (SMIL) animations too.
@@ -241,6 +241,5 @@
     document.querySelectorAll("svg").forEach(function (svg) { if (svg.pauseAnimations) svg.pauseAnimations(); });
   }
 </script>
-<script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
 </body>
 </html>
