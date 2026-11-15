@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اطلب نسختك | بالبيت</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FBF5EF">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="padding-bottom:0">
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="index.html" aria-label="بالبيت، الصفحة الرئيسية"><svg viewBox="0 0 64 40" aria-hidden="true"><path d="M6 34 L32 8 L58 34"/></svg><span>بالبيت</span></a>
+    <a class="btn btn-sm btn-dark" href="index.html#buy">رجوع</a>
+  </div>
+</header>
+
+<main class="order">
+  <div class="wrap narrow">
+    <h1 class="h2">اطلب نسختك</h1>
+    <p class="sub">3 خطوات، وبيوصلك الـPDF عالإيميل.</p>
+
+    <!-- Shown after the form was sent (order.php redirects here with ?sent=1). -->
+    <div class="card notice notice-ok" id="sent" hidden>
+      <h2 class="h3">شكرًا! وصلنا طلبك.</h2>
+      <p>رقم الطلب: <b dir="ltr" id="sent-id"></b></p>
+      <p>منتأكد من الدفع، ومنبعتلك الـPDF عالإيميل خلال 24 ساعة، وغالبًا أسرع. إذا ما شفته، شيك بالـSpam.</p>
+      <a class="btn" href="index.html">رجوع عالصفحة الرئيسية</a>
+    </div>
+
+    <!-- Shown while no Whish link or number is set below. -->
+    <div class="card notice" id="soon" hidden>
+      <h2 class="h3">الطلب رح يفتح قريبًا</h2>
+      <p>عم نجهّز الدفع. تابعنا على إنستغرام <a href="https://instagram.com/bilbeit.fit" dir="ltr">@bilbeit.fit</a> لتعرف أول ما يفتح.</p>
+    </div>
+
+    <p class="notice notice-err" id="err" hidden role="alert"></p>
+
+    <form id="order" method="post" action="order.php" hidden>
+      <ol class="steps">
+        <li>
+          <b>1</b>
+          <div class="step-body">
+            <h2 class="h3">اختار نسختك</h2>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="version" value="women" required><span>للنساء</span></label>
+              <label class="choice"><input type="radio" name="version" value="men" required><span>للرجال</span></label>
+            </div>
+          </div>
+        </li>
+        <li>
+          <b>2</b>
+          <div class="step-body">
+            <h2 class="h3">ادفع 15$ عبر Whish</h2>
+            <p>من تطبيق Whish Money، أو من أي فرع Whish بلبنان.</p>
+            <a class="btn" id="whish-link" href="#" target="_blank" rel="noopener" hidden>ادفع بـWhish</a>
+            <p id="whish-num" hidden>حوّل على الرقم: <b dir="ltr" id="whish-num-val"></b>
+              <button type="button" class="btn btn-sm btn-dark" id="copy">نسخ الرقم</button></p>
+          </div>
+        </li>
+        <li>
+          <b>3</b>
+          <div class="step-body">
+            <h2 class="h3">عبّي معلوماتك</h2>
+            <div class="field"><label for="f-name">اسمك</label>
+              <input id="f-name" name="name" autocomplete="name" maxlength="80" required></div>
+            <div class="field"><label for="f-email">إيميلك (هون بيوصلك الملف)</label>
+              <input id="f-email" name="email" type="email" dir="ltr" autocomplete="email" maxlength="120" required></div>
+            <div class="field"><label for="f-phone">رقم الـWhish يلي دفعت منه</label>
+              <input id="f-phone" name="phone" type="tel" dir="ltr" autocomplete="tel" maxlength="30" required></div>
+            <div class="field"><label for="f-ref">رقم العملية (إذا موجود)</label>
+              <input id="f-ref" name="ref" dir="ltr" maxlength="60"></div>
+            <!-- Spam trap: people never see or fill this field. -->
+            <div class="trap" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+            <label class="agree"><input type="checkbox" required>
+              <span>عمري فوق 18، وقريت <a href="terms.html">الشروط</a> و<a href="refund.html">سياسة الاسترجاع</a>.</span></label>
+            <button class="btn btn-block" type="submit">ابعت الطلب</button>
+          </div>
+        </li>
+      </ol>
+      <p class="pay-note">منتأكد من كل دفعة بإيدنا، ومنبعتلك الـPDF عالإيميل خلال 24 ساعة. إذا ما عجبك، بترجعلك مصاريك خلال 14 يوم.</p>
+    </form>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a class="logo" href="index.html"><svg viewBox="0 0 64 40" aria-hidden="true"><path d="M6 34 L32 8 L58 34"/></svg><span>بالبيت</span></a>
+    <nav aria-label="روابط قانونية"><a href="terms.html">الشروط</a><a href="refund.html">الاسترجاع</a><a href="privacy.html">الخصوصية</a></nav>
+  </div>
+</footer>
+
+<script>
+  // Whish details. Put the Whish Business payment link, or the Whish number that receives the money (or both).
+  // While both are empty the page shows "opening soon" instead of the form.
+  const WHISH = {
+    link: "",
+    number: "+961 70 472 471"
+  };
+
+  const q = new URLSearchParams(location.search);
+  const show = function (id) { document.getElementById(id).hidden = false; };
+
+  if (q.get("sent")) {
+    document.getElementById("sent-id").textContent = q.get("id") || "";
+    show("sent");
+  } else if (!WHISH.link && !WHISH.number) {
+    show("soon");
+  } else {
+    show("order");
+    const v = q.get("v");
+    const radio = document.querySelector('input[name="version"][value="' + (v === "men" ? "men" : "women") + '"]');
+    if (v) radio.checked = true;
+    if (WHISH.link) { const a = document.getElementById("whish-link"); a.href = WHISH.link; a.hidden = false; }
+    if (WHISH.number) {
+      document.getElementById("whish-num-val").textContent = WHISH.number;
+      show("whish-num");
+      document.getElementById("copy").addEventListener("click", function () {
+        const b = this;
+        navigator.clipboard.writeText(WHISH.number).then(function () { b.textContent = "انتسخ ✓"; });
+      });
+    }
+    const errors = { "1": "في معلومة ناقصة أو غلط. شيك عالإيميل والرقم وجرّب مرة تانية.",
+                     "2": "صار في مشكلة وما وصلنا الطلب. ابعتلنا عالإيميل bilbeit.fit@gmail.com." };
+    if (errors[q.get("err")]) { const e = document.getElementById("err"); e.textContent = errors[q.get("err")]; e.hidden = false; }
+  }
+</script>
+</body>
+</html>
