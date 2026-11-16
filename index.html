@@ -7,7 +7,7 @@
 <meta name="description" content="برنامج رياضة بالبيت للمبتدئين: 28 يوم جاهزين، 15 لـ20 دقيقة باليوم، بلا نط وبلا أدوات. نسخة للنساء ونسخة للرجال، PDF على تلفونك بـ15$.">
 <meta property="og:title" content="28 يوم بالبيت">
 <meta property="og:description" content="رياضة بالبيت، 15 لـ20 دقيقة باليوم، بلا نط وبلا أدوات.">
-<meta property="og:image" content="img/cover-women.jpg">
+<meta property="og:image" content="https://bilbeit.kachakech.tech/img/cover-women.jpg">
 <meta name="theme-color" content="#FBF5EF">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,21 +51,8 @@
         <div class="phone"><img src="img/cover-women.jpg" alt="" width="720" height="900"></div>
         <div class="phone phone-back"><img src="img/cover-men.jpg" alt="" width="720" height="900"></div>
         <div class="fig-card">
-          <!-- SMIL animation: works in Safari, Chrome and Firefox (CSS "d" animation does not work in Safari). -->
-          <svg viewBox="0 0 600 420" class="hero-svg"><line x1="80" y1="370" x2="540" y2="370" class="ground"/>
-            <path d="M380 255 H480 M480 255 V130 M390 255 V370 M470 255 V370" class="prop"/>
-            <path d="M200 300 V150 M170 185 L200 150 L230 185" class="hint">
-              <animateTransform attributeName="transform" type="translate" values="0 0;0 -18;0 0" dur="1.5s" repeatCount="indefinite"/></path>
-            <circle cx="345" cy="140" r="30" class="fig">
-              <animate attributeName="cx" values="345;345;330;330;345" keyTimes="0;.15;.5;.65;1" dur="3s" repeatCount="indefinite"
-                       calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1"/>
-              <animate attributeName="cy" values="140;140;62;62;140" keyTimes="0;.15;.5;.65;1" dur="3s" repeatCount="indefinite"
-                       calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1"/></circle>
-            <path d="M355 172 L410 250 M410 250 L310 250 L305 365 M365 190 L300 215" class="fig">
-              <animate attributeName="d" keyTimes="0;.15;.5;.65;1" dur="3s" repeatCount="indefinite" calcMode="spline"
-                       keySplines=".45 0 .55 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1"
-                       values="M355 172 L410 250 M410 250 L310 250 L305 365 M365 190 L300 215;M355 172 L410 250 M410 250 L310 250 L305 365 M365 190 L300 215;M330 95 L335 225 M335 225 L328 295 L310 365 M332 125 L262 150;M330 95 L335 225 M335 225 L328 295 L310 365 M332 125 L262 150;M355 172 L410 250 M410 250 L310 250 L305 365 M365 190 L300 215"/></path>
-          </svg>
+          <!-- Two poses of the same move swap like a rep (sit-w-a = standing, sit-w-b = down). -->
+          <div class="rep"><img class="rep-a" src="img/sit-w-a.webp" alt="" width="380" height="640"><img class="rep-b" src="img/sit-w-b.webp" alt="" width="380" height="640"></div>
           <p class="fig-cap"><b>قعود وقيام عن الكرسي</b><span>10 مرات · يوم 1</span></p>
         </div>
       </div>
@@ -128,9 +115,12 @@
       <p class="sub center">دفعة وحدة، بلا اشتراك. الملف إلك للأبد.</p>
       <div class="plans">
         <article class="plan" id="buy-women">
-          <span class="chip">للنساء</span>
-          <h3>28 يوم بالبيت – للنساء</h3>
-          <p class="price"><span>15$</span> مرة وحدة</p>
+          <div class="plan-head">
+            <div><span class="chip">للنساء</span>
+              <h3>28 يوم بالبيت – للنساء</h3>
+              <p class="price"><span>15$</span> مرة وحدة</p></div>
+            <img src="img/mascot-w.webp" alt="" width="308" height="720" loading="lazy">
+          </div>
           <ul class="ticks">
             <li>28 يوم جاهزين، 15 لـ20 دقيقة</li><li>13 حركة مشروحة بالرسم</li>
             <li>بلا نط، والجيران ما بيسمعوا شي</li><li>اختبار، جدول، وصفحة سلامة</li>
@@ -138,9 +128,12 @@
           <a class="btn btn-block" data-checkout="women" href="#">اشتري نسخة النساء</a>
         </article>
         <article class="plan plan-dark" id="buy-men">
-          <span class="chip">للرجال</span>
-          <h3>28 يوم بالبيت – للرجال</h3>
-          <p class="price"><span>15$</span> مرة وحدة</p>
+          <div class="plan-head">
+            <div><span class="chip">للرجال</span>
+              <h3>28 يوم بالبيت – للرجال</h3>
+              <p class="price"><span>15$</span> مرة وحدة</p></div>
+            <img src="img/mascot-m.webp" alt="" width="235" height="720" loading="lazy">
+          </div>
           <ul class="ticks">
             <li>28 يوم جاهزين، 15 لـ20 دقيقة</li><li>13 حركة مشروحة بالرسم</li>
             <li>قوة ولياقة بالبيت، بلا نادي</li><li>اختبار، جدول، وصفحة سلامة</li>
@@ -198,6 +191,7 @@
   <section class="sec final">
     <svg class="waves" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="bg-drift"><path d="M0 70 Q90 48 180 70 T360 70 T540 70 T720 70 T900 70 T1080 70 T1260 70 T1440 70 T1620 70 T1800 70 T1980 70 T2160 70 T2340 70 T2520 70 T2700 70 T2880 70"/><path d="M0 340 Q90 312 180 340 T360 340 T540 340 T720 340 T900 340 T1080 340 T1260 340 T1440 340 T1620 340 T1800 340 T1980 340 T2160 340 T2340 340 T2520 340 T2700 340 T2880 340"/></g></svg>
     <div class="wrap center">
+      <div class="duo" aria-hidden="true"><img src="img/mascot-w.webp" alt="" width="308" height="720" loading="lazy"><img src="img/mascot-m.webp" alt="" width="235" height="720" loading="lazy"></div>
       <h2 class="h2">أحسن يوم لتبلّش هو اليوم.</h2>
       <p class="sub">ولو 10 دقايق.</p>
       <div class="cta-row center-row">
