@@ -76,6 +76,7 @@
             <div class="field"><label for="f-ref">رقم العملية (إذا موجود)</label>
               <input id="f-ref" name="ref" dir="ltr" maxlength="60"></div>
             <!-- Spam trap: people never see or fill this field. -->
+            <input type="hidden" name="src" id="f-src">
             <div class="trap" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
             <label class="agree"><input type="checkbox" required>
               <span>عمري فوق 18، وقريت <a href="terms.html">الشروط</a> و<a href="refund.html">سياسة الاسترجاع</a>.</span></label>
@@ -125,10 +126,12 @@
         navigator.clipboard.writeText(WHISH.number).then(function () { b.textContent = "انتسخ ✓"; });
       });
     }
+    try { document.getElementById("f-src").value = sessionStorage.getItem("bb_src") || ""; } catch (e) {}
     const errors = { "1": "في معلومة ناقصة أو غلط. شيك عالإيميل والرقم وجرّب مرة تانية.",
                      "2": "صار في مشكلة وما وصلنا الطلب. ابعتلنا عالإيميل bilbeit.fit@gmail.com." };
     if (errors[q.get("err")]) { const e = document.getElementById("err"); e.textContent = errors[q.get("err")]; e.hidden = false; }
   }
 </script>
+<script src="t.js" defer></script>
 </body>
 </html>

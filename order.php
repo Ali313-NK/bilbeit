@@ -3,6 +3,7 @@
 // Emails the order to the shop, sends the buyer a confirmation, and keeps a backup line
 // in a CSV file one folder above public_html (not reachable from the web).
 declare(strict_types=1);
+require __DIR__ . '/inc/common.php';
 
 const SHOP_EMAIL = 'bilbeit.fit@gmail.com';
 const FROM_EMAIL = 'orders@bilbeit.kachakech.tech';
@@ -49,9 +50,9 @@ $safe = function (string $s): string {
     return preg_match('/^[=+\-@]/', $s) ? "'" . $s : $s;
 };
 $saved = false;
-$fh = @fopen(dirname(__DIR__) . '/bilbeit-orders.csv', 'ab');
+$fh = @fopen(ORDERS_CSV, 'ab');
 if ($fh !== false) {
-    $saved = fputcsv($fh, array_map($safe, [$when, $id, $version, $name, $email, $phone, $ref])) !== false;
+    $saved = fputcsv($fh, array_map($safe, [$when, $id, $version, $name, $email, $phone, $ref]), ',', '"', '\\') !== false;
     fclose($fh);
 }
 
@@ -66,13 +67,16 @@ $shopBody = "طلب جديد\n\n"
 $sentShop = mail(SHOP_EMAIL, encode_header("طلب جديد $id – $label"), $shopBody,
     "$from\r\nReply-To: $email\r\n$common", '-f' . FROM_EMAIL);
 
-$buyerBody = "أهلا $name،\n\n"
+$buyerBody = "أهلا {$name}،\n\n"
     . "وصلنا طلبك: $label\nرقم الطلب: $id\n\n"
     . "منتأكد من الدفع عبر Whish، ومنبعتلك الـPDF على هالإيميل خلال 24 ساعة، وغالبًا أسرع.\n"
     . "إذا ما شفته، شيك بالـSpam.\n\n"
     . "أي سؤال؟ ردّ على هالإيميل.\n\nبالبيت\nhttps://bilbeit.kachakech.tech\n";
 mail($email, encode_header("وصلنا طلبك $id"), $buyerBody,
     "$from\r\nReply-To: " . SHOP_EMAIL . "\r\n$common", '-f' . FROM_EMAIL);
+
+$ua = (string)($_SERVER['HTTP_USER_AGENT'] ?? '');
+log_event('order', '/order.php', source_of(field('src', 40), '', $ua), device_of($ua), visitor_id(client_ip(), $ua));
 
 if (!$sentShop && !$saved) {
     back('err=2&v=' . $version);
